@@ -43,7 +43,10 @@ post '/new' do
     @error = 'Enter text...'
     # если ввели пустое значение, ошибка и на повтор ввода
     return erb :new
-  end 
+  end
+
+  @db.execute 'INSERT INTO Posts (content, created_date) VALUES (?, datetime())', [content]
+
   erb "You typed: #{content}"
 end
 
