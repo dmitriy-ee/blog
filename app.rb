@@ -31,6 +31,7 @@ configure do
 end
 
 get '/new' do
+  @db.execute 'SELECT * FROM Posts' 
   erb :new
 end
 
@@ -45,12 +46,17 @@ post '/new' do
     return erb :new
   end
 
+  # запись в БД данных
   @db.execute 'INSERT INTO Posts (content, created_date) VALUES (?, datetime())', [content]
 
   erb "You typed: #{content}"
 end
 
-
+# вывод всех постов
+get '/' do
+  @post_list=@db.execute 'SELECT * FROM Posts ORDER BY id desc' 
+  erb :index
+end
 
 
 
