@@ -2,6 +2,7 @@
 <br />
 <% @post_list.each do |post| %>
 	<p>
+		<!-- post - это хеш, мы обращаемся к хешу, с помощью строки ''-->
 		<h4><%= post['content'] %></h4>
 		<br />
 		Added at: <%= post['created_date'] %>

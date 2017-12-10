@@ -49,7 +49,10 @@ post '/new' do
   # запись в БД данных
   @db.execute 'INSERT INTO Posts (content, created_date) VALUES (?, datetime())', [content]
 
-  erb "You typed: #{content}"
+  # перенаправление на главную страницу
+  redirect to '/'
+
+  #erb "You typed: #{content}"
 end
 
 # вывод всех постов
