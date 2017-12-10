@@ -1,1 +1,10 @@
-<h2>Latest Posts</h2>
+<h2>Latest Posts: </h2>
+<br />
+<% @post_list.each do |post| %>
+	<p>
+		<h4><%= post['content'] %></h4>
+		<br />
+		Added at: <%= post['created_date'] %>
+	</p>
+	<hr />
+<% end %>	
