@@ -38,6 +38,12 @@ post '/new' do
 
   # получаем переменную из POST запроса
   content = params[:content]
+
+  if content.length <= 0
+    @error = 'Enter text...'
+    # если ввели пустое значение, ошибка и на повтор ввода
+    return erb :new
+  end 
   erb "You typed: #{content}"
 end
 
