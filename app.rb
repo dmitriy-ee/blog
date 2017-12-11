@@ -35,7 +35,7 @@ configure do
              id INTEGER PRIMARY KEY AUTOINCREMENT, 
              created_date DATE, 
              content TEXT
-             post_id INTEGER
+             post_id TEXT
              )'
 end
 
@@ -88,10 +88,13 @@ post '/details/:id' do
   id = params[:id]
 
 #!!! важно id привести к значению integer !!!
-  #id = id.to_i
+  id = id.to_i
 
 # получаем переменную из POST запроса
   content = params[:content]
+
+# запись в БД данных
+@db.execute 'INSERT INTO Comments (content, created_date, post_id) VALUES (?, datetime(), ?)', [content, id]
 
 erb "You typed comment #{content} for post #{id}"
 
