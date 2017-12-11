@@ -96,7 +96,10 @@ post '/details/:id' do
 # запись в БД данных
 @db.execute 'INSERT INTO Comments (content, created_date, post_id) VALUES (?, datetime(), ?)', [content, id]
 
-erb "You typed comment #{content} for post #{id}"
+# перенаправление на страницу поста
+redirect to ('/details/' + id.to_s)
+
+#erb "You typed comment #{content} for post #{id}"
 
 end
 
