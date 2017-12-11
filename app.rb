@@ -57,15 +57,28 @@ end
 
 # вывод всех постов
 get '/' do
-  @post_list=@db.execute 'SELECT * FROM Posts ORDER BY id desc' 
+  @post_list = @db.execute 'SELECT * FROM Posts ORDER BY id desc' 
   erb :index
 end
 
+# вывод комментария для всех постов по отдельности
+get '/details/:id' do
+  id = params[:id]
+#!!! важно id привести к значению integer !!!
+  id = id.to_i
+
+  @res = @db.execute 'SELECT * FROM Posts WHERE id=(?)', [id]
+  erb :details
+
+  #@xrow = res[0]
+
+  
+end
 
 
-
-
-
+# def is_details_exists? db, id
+#   (@db.execute 'SELECT * FROM Posts WHERE id=(?)', [id]).as_hash
+# end
 
 
 

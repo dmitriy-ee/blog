@@ -1,0 +1,14 @@
+<h4> Post dtails: </h4>
+
+<br />
+<% @res.each do |i| %>
+	<p>
+		<h4><%= i['content'] %></h4>
+		<br />
+		Added at: <%= i['created_date'] %>
+<% end %>
+</p>
+
+
+
+
