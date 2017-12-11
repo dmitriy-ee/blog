@@ -1,4 +1,4 @@
-<h4> Post dtails: </h4>
+<h4> Post details: </h4>
 
 <br />
 <% @res.each do |i| %>
@@ -6,9 +6,17 @@
 		<h4><%= i['content'] %></h4>
 		<br />
 		Added at: <%= i['created_date'] %>
-<% end %>
+
+</p>
+<br />
+<h4> Comments </h4>
+<p>
+<form action="/details/<%= i['id'] %>" method="POST" role="form">
+	<textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Type text here..."></textarea>
+	<br>
+  	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </p>
 
-
-
+<% end %>
 

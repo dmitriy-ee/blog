@@ -70,10 +70,25 @@ get '/details/:id' do
   @res = @db.execute 'SELECT * FROM Posts WHERE id=(?)', [id]
   erb :details
 
-  #@xrow = res[0]
-
-  
+  #@xrow = res[0] НЕ ЗАРАБОТАЛО ??
 end
+
+#обработчик post запроса details
+post '/details/:id' do
+  
+  id = params[:id]
+
+#!!! важно id привести к значению integer !!!
+  #id = id.to_i
+
+# получаем переменную из POST запроса
+  content = params[:content]
+
+erb "You typed comment #{content} for post #{id}"
+
+end
+
+
 
 
 # def is_details_exists? db, id
