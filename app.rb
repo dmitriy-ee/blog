@@ -77,6 +77,10 @@ get '/details/:id' do
   id = id.to_i
 
   @res = @db.execute 'SELECT * FROM Posts WHERE id=(?)', [id]
+
+# выбираем комментарии для нашего поста
+  @comments = @db.execute 'SELECT * FROM Comments WHERE post_id=(?) ORDER BY id', [id]
+
   erb :details
 
   #@xrow = res[0] НЕ ЗАРАБОТАЛО ??
